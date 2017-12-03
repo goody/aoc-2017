@@ -2,10 +2,10 @@ const listString = '683763347952248558274598352939674972954641755898815882568823
 const list = [...listString.trim()].map(Number);
 
 const captcha = (sum, curr, idx, array) => {
-	let next = (array.length === idx) ? array[0] : array[idx+1]; 
+	let next = array[(idx + array.length /2) % array.length]; 
 	return curr === next ? sum + curr : sum;
 }                        
 
-const total = list.reduce(captcha);
+const total = list.reduce(captcha,0);
 
 console.log(`total: ${total}`);
